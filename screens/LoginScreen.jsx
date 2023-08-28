@@ -20,8 +20,9 @@ import { useNavigation } from "@react-navigation/native";
 import BackImage from "../assets/images/photo-bg.png";
 
 const Login = () => {
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+  const [email, onChangeEmail] = useState("");
+  const [password, onChangePassword] = useState("");
+
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isOpenKeyboard, setIsOpenKeyboard] = useState(false);
   const [isFocusedMail, setIsFocusedMail] = useState(false);
@@ -32,6 +33,7 @@ const Login = () => {
     setSecureTextEntry(!secureTextEntry);
   };
 
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -89,13 +91,21 @@ const Login = () => {
               </View>
               <Pressable
                 style={styles.buttonLogin}
-                onPress={() => navigation.navigate("Post")}
+                onPress={() => {
+                  Alert.alert("Credentials Login", ` ${email} + ${password}`),
+                  navigation.navigate("Post")
+                }
+                }
               >
                 <Text style={styles.textBtnLogin}>Увійти</Text>
               </Pressable>
               <Pressable
                 style={styles.buttonRegistration}
-                onPress={() => navigation.navigate("Registration")}
+                onPress={() => {                  
+                  navigation.navigate("Registration")   
+                }                
+                                   
+                }
               >
                 <Text style={styles.text} >Немає аккаунту? Зареєструватися</Text>
               </Pressable>

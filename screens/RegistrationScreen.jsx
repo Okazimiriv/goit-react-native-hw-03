@@ -20,9 +20,10 @@ import BackImage from "../assets/images/photo-bg.png";
 import { useState } from "react";
 
 const Registration = () => {
-  const [login, onChangeLogin] = React.useState("");
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+  const [login, onChangeLogin] = useState("");
+  const [email, onChangeEmail] = useState("");
+  const [password, onChangePassword] = useState("");
+
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [isOpenKeyboard, setIsOpenKeyboard] = useState(false);
   const [isFocusedLogo, setIsFocusedLogo] = useState(false);
@@ -34,6 +35,7 @@ const Registration = () => {
     setSecureTextEntry(!secureTextEntry);
   };
 
+ 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
@@ -117,13 +119,18 @@ const Registration = () => {
               </View>
               <Pressable
                 style={styles.buttonNewRegistration}
-                onPress={() => navigation.navigate("Login")}
+                onPress={() => {
+                 Alert.alert("Credentials Regisrer", `${login} + ${email} + ${password}`),
+                  navigation.navigate("Login")
+                }}
               >
                 <Text style={styles.textBtnLogin}>Зареєструватися</Text>
               </Pressable>
               <Pressable
                 style={styles.buttonAlreadyLogin}
-                onPress={() => navigation.navigate("Login")}
+                onPress={() =>                   
+                  navigation.navigate("Login")
+                }
               >
                 <Text style={styles.text}>Вже є аккаунт? Увійти</Text>
               </Pressable>
